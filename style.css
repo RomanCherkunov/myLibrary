@@ -1,5 +1,385 @@
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+:root{
+    --dark-brown-color: #49382F;
+    --warm-brown-color: #E8C9A0;
+    --warm-cream-color: #F7F3EB;
+    --darker-cream-color: #dbd8d0;
+    --beige-color:#E9DFD0;
+    --sage-green-color:#DCE6D8;
+    --soft-terracotta-color: #F0DFD5;
+    --white-color: white;
+    --black-color: black;
+    --red-color: rgb(184, 76, 76);
+    --green-color: rgb(22, 128, 22);
+
+    .inter{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+}
+
+body{
+    font-family: 'Inter';
+}
+
+.container{
+    min-height: 100vh;
+    height: auto;
+    display: grid;
+    grid-template-rows: 10% 1fr;
+}
+
+
+@media (max-width: 400px) {
+    .container {
+        grid-template-rows: 15% 1fr;
+    }
+}
+
+.header{
+    background-color: var(--dark-brown-color);
+    padding: 15px;
+    display: grid;
+}
+
+.header .myLibrary{
+    color: var(--white-color);
+    font-weight: bold;
+    letter-spacing: 0.02rem;
+    font-size: 2rem;
+}
+
+.header .myLibrary svg{
+    color: var(--warm-brown-color);
+}
+
+.header .headerDescription{
+    color: var(--darker-cream-color);
+    font-size: 0.9rem;
+}
+
+.header .rightDescription{
+    justify-self: end;
+    color: var(--warm-brown-color)
+}
+
+
+
+
+.main{
+    background-color: var(--warm-cream-color);
+    display: grid;
+    grid-template-rows: 200px;
+    grid-auto-rows: auto;
+    padding: 0 10% 5% 10%;
+}
+
+.information{
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    padding: 20px;
+}
+
+.information h1{
+    font-size: 1.5rem;
+    color: var(--dark-brown-color);
+    font-weight: 600;
+}
+
+.information .info{
+    display: flex;
+    gap: 10px;
+}
+
+.information .total,.information .read,.information .unread{
+    padding: min(15px, 5%);
+    height: clamp(100px, 60%, 160px);
+    width: 33%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.information .info .bigNum{
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.information .total{
+    background-color: var(--beige-color);
+    color: color-mix(in srgb, var(--beige-color), black 50%);
+}
+
+.information .read{
+    background-color: var(--sage-green-color);
+    color: color-mix(in srgb, var(--sage-green-color), black 50%);
+}
+
+.information .unread{
+    background-color: var(--soft-terracotta-color);
+    color: color-mix(in srgb, var(--soft-terracotta-color), black 50%);
+}
+
+
+
+
+
+
+
+.libraryDisplay{
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+}
+
+.libraryDisplay h2{
+    font-size: 1.5rem;
+    color: var(--dark-brown-color);
+    font-weight: 600;
+}
+
+.libraryDisplay .addBook{
+    justify-self: end;
+    background-color: var(--dark-brown-color);
+    color: var(--white-color);
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.libraryDisplay .bookLibrary{
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.libraryDisplay .bookCard{
+    height: 150px;
+    background-color: var(--white-color);
+    display: flex;
+    border-radius: 20px;
+    padding: 20px;
+    gap: 20px;
+}
+
+.libraryDisplay .bookImage{
+    background-color:var(--warm-brown-color);
+    color: var(--dark-brown-color);
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.libraryDisplay .bookImage{
+    font-size: 2rem;
+}
+
+
+
+.libraryDisplay .bookInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.libraryDisplay .bookInfo .bookTitle{
+    color: var(--dark-brown-color);
+    padding-bottom: 4px;
+}
+
+.libraryDisplay .bookInfo .bookAuthor, .bookPagesAndGenre, .bookStatus{
+    color: var(--dark-brown-color);
+    font-weight: 400;
+    padding-bottom: 7px;
+}
+
+.libraryDisplay .bookInfo .bookPagesAndGenre{
+    font-size: 0.9rem;
+}
+
+.libraryDisplay .status{
+    display: flex;
+    gap: 5px;
+}
+
+
+.libraryDisplay .bookStatus{
+    font-size: 0.8rem;
+    color: var(--dark-brown-color);
+    background-color:var(--sage-green-color);
+    padding: 8px;
+    border-radius: 20px;
+}
+
+.libraryDisplay .markButton{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+.bookStatus.unreadStatus{
+    background-color: var(--soft-terracotta-color);
+}
+
+.bookStatus.readStatus{
+    background-color: var(--sage-green-color);
+}
+
+.markButton.unreadStatus{
+    color: var(--green-color);
+}
+
+.markButton.readStatus{
+    color: var(--red-color);
+}
+
+
+.libraryDisplay .deleteBook{
+    align-self: center;
+    margin-left: auto;
+    height: fit-content;
+    color: var(--red-color);
+    cursor: pointer;
+}
+
+
+
+
+#addBookPopUp{
+    border: none;
+    background-color:var(--warm-cream-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#addBookPopUp .dialogHeader{
+    color: var(--dark-brown-color);
+}
+
+#addBookPopUp .formRow{
+    display: flex;
+    flex-direction: column;
+}
+
+#addBookPopUp .formRow input{
+    padding: 10px;
+    background-color: var(--warm-cream-color);
+    border: 2px solid var(--beige-color);
+    border-radius: 10px;
+}
+
+#addBookPopUp .formRow input:user-valid{
+    border-color: var(--green-color);
+}
+
+#addBookPopUp .formRow input:user-invalid{
+    border-color: var(--red-color);
+}
+
+#addBookPopUp .formRow label{
+    color: var(--dark-brown-color);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
+#addBookPopUp #addBookForm{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+#addBookPopUp .forTitle{
+    grid-column: span 2;
+}
+
+#addBookPopUp .forHasRead{
+    display: flex;
+    flex-direction: column;
+}
+
+
+#addBookPopUp hr{
+    margin-top: 30px;
+    border: 1px solid var(--beige-color);
+}
+
+#addBookPopUp .dialogButtons{
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+#addBookPopUp .dialogButtons button{
+    padding: 8px 18px;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#addBookPopUp .dialogCancel{
+    border: 2px solid var(--beige-color);
+    background-color: var(--warm-cream-color);
+    color: var(--dark-brown-color);
+}
+
+#addBookPopUp .dialogAdd{
+    color: var(--warm-cream-color);
+    border: 2px solid var(--dark-brown-color);
+    background-color: var(--dark-brown-color);
+}
+
+
+#addBookPopUp .noOption, #addBookPopUp .yesOption{
+    border: 2px solid var(--beige-color);
+    border-radius: 10px;
+    padding: 8px;
+}
+
+#addBookPopUp .options{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px
+}
+
+#addBookPopUp .yesOption:has(input[type="radio"]:checked){
+    background-color: color-mix(in srgb,var(--green-color) 20%,var(--warm-cream-color));
+    border-color: var(--green-color);
+    accent-color: var(--green-color);
+}
+
+#addBookPopUp .noOption:has(input[type="radio"]:checked){
+    background-color: color-mix(in srgb,var(--red-color) 20%,var(--warm-cream-color));
+    border-color: var(--red-color);
+    accent-color: var(--red-color);
+}
+
+
+
+
+#addBookPopUp .importantSign{
+    color: var(--red-color);
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#addBookPopUp:not([open]) {
+  display: none;
+}

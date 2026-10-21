@@ -3,12 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Library</title>
+    <link href="reset.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script defer src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6899b7e295.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">1</div>
+    <div class="container">
+        <div class="header">
+            <div class="myLibrary"><i class="fa-solid fa-book"></i> My Library</div>
+            <div class="headerDescription">Every book has a story. Keep track of yours</div>
+        </div>
+        <div class="main">
 
-    <script src="./script.js"></script>
+            <div class="information">
+                <h1>Bookshelf</h1>
+                <div class="info">
+                    <div class="total">
+                        TOTAL BOOKS
+                        <span class="totalNum bigNum">0</span>
+                    </div>
+                    <div class="read">
+                        READ BOOKS
+                        <span class="readNum bigNum">0</span>
+                    </div>
+                    <div class="unread">
+                        UNREAD BOOKS
+                        <span class="unreadNum bigNum">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="libraryDisplay">
+                <h2>All Books</h2>
+                <button class="addBook" onclick='openPopUp()'>+ Add a Book</button>
+                <div class="bookLibrary">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <dialog id="addBookPopUp" closedby="any">
+        <div class="dialogHeader">
+            <h1>Add a Book</h1>
+            <p>Fill in the details to add a new book in the library</p>
+        </div>
+        <div class="dialogForm">
+            <form id="addBookForm">
+                <div class="formRow forTitle">
+                    <label for="bookTitle">Title <span class="importantSign">*</span></label>
+                    <input type="text" required id="bookTitle" placeholder="e.g The Midnight Library">
+                </div>
+
+                <div class="formRow forAuthor">
+                    <label for="bookAuthor">Author <span class="importantSign">*</span></label>
+                    <input type="text" required id="bookAuthor" placeholder="e.g Matt Haig">
+                </div>
+
+                <div class="formRow forGenre">
+                    <label for="bookGenre">Genre <span class="importantSign">*</span></label>
+                    <input type="text" required id="bookGenre" placeholder="e.g Fantasy">
+                </div>
+
+                <div class="formRow forNumPages">
+                    <label for="bookNumPages">Number of Pages <span class="importantSign">*</span></label>
+                    <input type="number" required id="bookNumPages" placeholder="e.g 304" min="1" max="999">
+                </div>
+
+                <div class="formRow forHasRead">
+                    <label for="hasRead">Have you read this book? <span class="importantSign">*</span></label>
+                    <div class="options">
+                        <div class="yesOption" for="bookHasRead">
+                            <input type="radio" id="bookHasRead" name="hasRead" value="true" required>
+                            <label for="bookHasRead">Yes</label>
+                        </div>
+                        <div class="noOption" >
+                            <input type="radio" id="bookHasNotRead" name="hasRead" value="false" required>
+                            <label for="bookHasNotRead">No</label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </form>
+            <hr>
+        </div>
+        
+        <div class="dialogButtons">
+            <button class="dialogCancel" onclick='closePopUp()'>Cancel</button>
+            <button class="dialogAdd" type="submit" form="addBookForm">Add Book</button>
+        </div>
+    </dialog>
 </body>
 </html>
